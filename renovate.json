@@ -1,0 +1,14 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", "schedule:weekly", ":semanticCommitsDisabled"],
+  "lockFileMaintenance": { "enabled": true },
+  "packageRules": [
+    { "matchManagers": ["pyenv"], "enabled": false },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github actions",
+      "matchUpdateTypes": ["minor", "patch", "digest"],
+      "automerge": true
+    }
+  ]
+}
