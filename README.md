@@ -36,10 +36,15 @@ tunnel = SshTunnel(
 await tunnel.open()  # localhost:tunnel.local_port -> the VM's port 8000
 ```
 
-Install from a release tarball:
+Install from a release tag (a git source, so Renovate can bump the tag and `uv.lock` together;
+URL sources are invisible to it):
 
 ```toml
-dependencies = ["colabkit @ https://github.com/farrellm/colabkit/archive/refs/tags/v0.1.0.tar.gz"]
+[project]
+dependencies = ["colabkit"]
+
+[tool.uv.sources]
+colabkit = { git = "https://github.com/farrellm/colabkit", tag = "v0.1.0" }
 ```
 
 Development: `make fmt`, `make check` (ruff, mypy strict, pytest).
